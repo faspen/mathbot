@@ -27,16 +27,17 @@ def fetch_equation(tweet):
             break
     return equation
 
-last_seen_id = retrive_id(FILE)
-mentions = api.mentions_timeline(last_seen_id, tweet_mode="extended")
+while True:
+    last_seen_id = retrive_id(FILE)
+    mentions = api.mentions_timeline(last_seen_id, tweet_mode="extended")
 
-
-for mention in reversed(mentions):
-    last_seen_id = mention.id
-    store_id(last_seen_id, FILE)
-    equation = fetch_equation(mention.full_text)
-    try:
-        solution = eval(equation)
-        api.update_status("The answer is {}".format(solution), mention.id)
-    except NameError:
-        api.update_status("Do not pass in letters or words, please!", mention.id)
+    for mention in reversed(mentions):
+        last_seen_id = mention.id
+        store_id(last_seen_id, FILE)
+        equation = fetch_equation(mention.full_text)
+        try:
+            solution = eval(equation)
+            api.update_status("The answer is {}".format(solution), mention.id)
+        except NameError:
+            api.update_status("Do not pass in letters or words, please!", mention.id)
+        time.sleep(3)

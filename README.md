@@ -17,3 +17,5 @@ To use the bot, mention it by typing '@mathbot_' and typing in an equation after
 Finn Aspenson
 * [Twitter](https://twitter.com/FAspenson)
 * [LinkedIn](https://www.linkedin.com/in/finn-aspenson-0a23841b6/)
+
+BOT CURRENTLY OFFLINE
